@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f0f0;
+  color: black;
+}
+
+.container {
+  background: #ff19d1;
+  background: linear-gradient(
+    160deg,
+    rgba(236, 0, 240, 0.967) 0%,
+    rgb(119, 0, 255) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  margin: 50px auto;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 24px;
+  border-bottom: 2px solid black;
+}
+
+.question {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.options > * {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: transparent;
+  backdrop-filter: 5px;
+  font-size: 20px;
+  font-weight: 700px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 2px solid black;
+}
+
+.skipBtn {
+  width: 40%;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 24px;
+  background-color: transparent;
+  backdrop-filter: 5px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 2px solid black;
+}
+
+.winingContainer {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 24px;
+  gap: 20px;
+  background: #ff19d1;
+  background: linear-gradient(
+    150deg,
+    rgba(236, 0, 240, 0.967) 0%,
+    rgb(119, 0, 255) 100%
+  );
+  border-radius: 10px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 10px;
+}
+
+.winingContainer button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 24px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: 5px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 2px solid black;
+}
+
+.tint{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0,0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.tint,.winingContainer{
+    display: none;
+}
