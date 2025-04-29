@@ -278,7 +278,7 @@ function enableOptions() {
 function checkFinished() {
   if (remainingQuestions.length === 0) {
     document.querySelector(".tint").style.display = "block";
-    document.querySelector(".winingContainer").style.display = "block";
+    document.querySelector(".winingContainer").style.display = "flex";
     document.querySelector(".winingScore").innerHTML =
       "Score: " + score.innerHTML;
     if (parseInt(score.innerHTML) >= 90) {
