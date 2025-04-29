@@ -1,4 +1,6 @@
 let bgMusic = new Audio("assets/quizBgMusic.mp3");
+let correctSound = new Audio("assets/correctAnswer.mp3");
+let incorrectSound = new Audio("assets/wrongAnswer.mp3");
 
 document.querySelector(".startBtn").addEventListener("click", () => {
   document.querySelector(".container1").style.display = "none";
@@ -12,7 +14,10 @@ document.querySelector(".startBtn").addEventListener("click", () => {
   bgMusic.volume = 0.3;
   bgMusic.muted = false;
   bgMusic.currentTime = 0;
-  bgMusic.play();
+  bgMusic.play().catch((error) => {
+    console.error("Audio playback failed:", error);
+  });
+  getRandomQuestion();
 });
 
 const quizQuestions = [
@@ -160,7 +165,7 @@ const quizQuestions = [
   },
 ];
 
-let remainingQuestions = quizQuestions;
+let remainingQuestions = quizQuestions.slice();
 
 let questionCont = document.querySelector(".question");
 let option1 = document.querySelector(".option1");
@@ -178,14 +183,15 @@ let time = 30;
 
 let answer = "";
 
-getRandomQuestion();
-
 timecont.innerHTML = 30;
 
 function getRandomQuestion() {
   console.log("Remaining Questions: ", remainingQuestions.length);
 
   let rndIndex = Math.floor(Math.random() * remainingQuestions.length);
+
+  document.querySelector(".quesNum").innerHTML =
+    quizQuestions.length - remainingQuestions.length + 1;
 
   let question = remainingQuestions[rndIndex].question;
   let options = remainingQuestions[rndIndex].options;
@@ -198,10 +204,6 @@ function getRandomQuestion() {
   option2.innerHTML = options[1].toString();
   option3.innerHTML = options[2].toString();
   option4.innerHTML = options[3].toString();
-
-  // Update question number
-  document.querySelector(".questionNo>span").innerHTML =
-    quizQuestions.length - (remainingQuestions.length + 1);
 
   if (questionTimer) {
     clearInterval(questionTimer);
@@ -232,15 +234,29 @@ function optionFunc(e) {
   if (e.target.innerHTML === answer) {
     score.innerHTML = parseInt(score.innerHTML) + 5;
     e.target.classList.add("correct");
+    correctSound.play().catch((error) => {
+      console.error("Audio playback failed:", error);
+    });
+    correctSound.volume = 1;
+    correctSound.currentTime = 0;
     setTimeout(() => {
       e.target.classList.remove("correct");
+      correctSound.pause();
+      correctSound.currentTime = 0;
       enableOptions();
       resetTimerAndCheck();
     }, 1000);
   } else {
     e.target.classList.add("incorrect");
+    incorrectSound.play().catch((error) => {
+      console.error("Audio playback failed:", error);
+    });
+    incorrectSound.volume = 1;
+    incorrectSound.currentTime = 0;
     setTimeout(() => {
       e.target.classList.remove("incorrect");
+      incorrectSound.pause();
+      incorrectSound.currentTime = 0;
       enableOptions();
       resetTimerAndCheck();
     }, 1000);
@@ -260,24 +276,24 @@ function enableOptions() {
 }
 
 function checkFinished() {
-  if (remainingQuestions.length === 18) {
+  if (remainingQuestions.length === 0) {
     document.querySelector(".tint").style.display = "block";
     document.querySelector(".winingContainer").style.display = "block";
     document.querySelector(".winingScore").innerHTML =
       "Score: " + score.innerHTML;
-    if (parseInt(score.innerHTML) > 90) {
+    if (parseInt(score.innerHTML) >= 90) {
       document.querySelector(".winingText").innerHTML =
         "Excellent! You are a Genius!";
-    } else if (parseInt(score.innerHTML) > 80) {
+    } else if (parseInt(score.innerHTML) >= 80) {
       document.querySelector(".winingText").innerHTML =
         "Awesome! You are a Genius!";
-    } else if (parseInt(score.innerHTML) < 50) {
+    } else if (parseInt(score.innerHTML) <= 50) {
       document.querySelector(".winingText").innerHTML = "You Failed";
     } else if (parseInt(score.innerHTML) > 50) {
       document.querySelector(".winingText").innerHTML = "You Passed";
+    } else if (parseInt(score.innerHTML) === 100) {
+      document.querySelector(".winingText").innerHTML = "Wow Perfect Score";
     }
-
-    remainingQuestions = quizQuestions;
   } else {
     getRandomQuestion();
   }
@@ -296,6 +312,7 @@ document.querySelector(".playAgainBtn").addEventListener("click", () => {
   score.innerHTML = 0;
   time = 30;
   timecont.innerHTML = 30;
-  // remainingQuestions = quizQuestions;
+  document.querySelector(".quesNum").innerHTML;
+  remainingQuestions = quizQuestions.slice();
   getRandomQuestion();
 });
