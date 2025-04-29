@@ -7,10 +7,10 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: #f0f0f0;
-  color: #333;
+  color: black;
 }
 
-.container {
+.container1 {
   background: #ff19d1;
   background: linear-gradient(
     160deg,
@@ -24,7 +24,7 @@ body {
   height: 100vh;
 }
 
-h1 {
+.heading {
   color: white;
   font-size: 2.5rem;
   margin-top: 50px;
@@ -34,7 +34,7 @@ h1 {
   border-radius: 10px;
 }
 
-button {
+.startBtn {
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(5px);
   color: black;
@@ -46,13 +46,201 @@ button {
   margin: 0 auto;
 }
 
-button:hover {
+.startBtn:hover {
   background: rgba(255, 255, 255, 0.6);
   transition: all 0.3s ease-in-out;
 }
 
-button:active {
+.startBtn:active {
   background: rgba(255, 255, 255, 0.8);
   transition: all 0.1s ease-in-out;
     transform: scale(0.95);
+}
+
+.container {
+  background: #ff19d1;
+  background: linear-gradient(
+    160deg,
+    rgba(236, 0, 240, 0.967) 0%,
+    rgb(119, 0, 255) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  margin: 50px auto;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 24px;
+  border-bottom: 2px solid black;
+}
+
+.question {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.options > * {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: transparent;
+  font-size: 20px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 2px solid black;
+}
+
+.options > *:hover {
+  transform: scale(1.02);
+}
+.options > *:active {
+  transform: scale(0.98);
+}
+
+.skipBtn {
+  width: 40%;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 24px;
+  background-color: transparent;
+  backdrop-filter: 5px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 2px solid black;
+}
+
+.skipBtn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+}
+
+.skipBtn:active {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(0.98);
+}
+
+.winingContainer {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 24px;
+  gap: 20px;
+  background: #ff19d1;
+  background: linear-gradient(
+    150deg,
+    rgba(236, 0, 240, 0.967) 0%,
+    rgb(119, 0, 255) 100%
+  );
+  border-radius: 10px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 10px;
+}
+
+.winingContainer button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 24px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: 5px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 2px solid black;
+}
+
+.tint {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.tint,
+.winingContainer {
+  display: none;
+}
+
+.correct {
+  background-color: rgb(2, 223, 2);
+  border: 2px solid white;
+  color: white;
+  font-weight: 700;
+}
+
+.incorrect {
+  background-color: rgb(255, 0, 0);
+  color: white;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+  .top {
+    font-size: 20px;
+  }
+  .question {
+    font-size: 20px;
+  }
+  .options > * {
+    font-size: 18px;
+  }
+  .skipBtn {
+    font-size: 20px;
+  }
+  .winingContainer {
+    width: 90%;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .top {
+    justify-content: space-around;
+    gap: 10px;
+  }
+}
+
+.container {
+  display: none;
 }

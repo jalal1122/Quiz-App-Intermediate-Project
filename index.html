@@ -3,13 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz App</title>
-    <link rel="stylesheet" href="./style.css" />
+    <title>Quiz App By MJ Dev Studio</title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="container1">
+      <h1 class="heading">Quiz App</h1>
+      <button class="startBtn">➡️ Start Quiz</button>
+    </div>
     <div class="container">
-      <h1>Quiz App</h1>
-      <a href="./QuizPage.html"><button>➡️ Start Quiz</button></a>
+      <div class="top">
+        <div class="timer">30</div>
+        <div class="questionNo">Question : <span>01</span></div>
+        <div class="Score">Score : <span>0</span></div>
+      </div>
+      <div class="question">Question here</div>
+      <div class="options">
+        <button
+          class="option1"
+          onclick="optionFunc(event)"
+          aria-label="Option 1"
+        >
+          Option 1
+        </button>
+        <button
+          class="option2"
+          onclick="optionFunc(event)"
+          aria-label="Option 2"
+        >
+          Option 2
+        </button>
+        <button
+          class="option3"
+          onclick="optionFunc(event)"
+          aria-label="Option 3"
+        >
+          Option 3
+        </button>
+        <button
+          class="option4"
+          onclick="optionFunc(event)"
+          aria-label="Option 4"
+        >
+          Option 4
+        </button>
+      </div>
+      <button class="skipBtn" aria-label="Skip Question">Skip</button>
+    </div>
+    <div class="tint"></div>
+    <div class="winingContainer">
+      <div class="winingText">Aweasome</div>
+      <div class="winingScore">Your Score : 80 / 100</div>
+      <button class="playAgainBtn">Play Again</button>
     </div>
   </body>
+  <script src="./script.js"></script>
 </html>
